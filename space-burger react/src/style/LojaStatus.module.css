@@ -1,0 +1,332 @@
+.container {
+    display: flex;
+    gap: 30px;
+    color: #4c5564;
+    padding: 20px;
+}
+
+.length {
+    display: flex;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin: 20px auto;
+    /* Center horizontally */
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 60px;
+    text-decoration: none !important;
+}
+
+.aberto {
+    color: green;
+    list-style: none !important;
+
+}
+
+.fechado {
+    color: red;
+    list-style: none !important;
+
+}
+
+.icon {
+    height: 16px;
+    width: 16px;
+    padding-inline-end: 5px;
+    padding-top: 5px;
+}
+
+.item {
+    text-decoration: none !important;
+    color: #4c5564;
+}
+
+
+.item2 {
+    text-decoration: none !important;
+    color: #4c5564;
+    transition: 0.3s;
+}
+
+.item2:hover {
+    color: #878e9b;
+}
+
+.noScroll {
+    overflow: hidden;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modalContent {
+    background-color: white;
+    padding-block-start: 20px;
+    border-radius: 8px;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 0;
+    justify-content: space-between;
+}
+
+.tab {
+    background: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+    flex: 1;
+    /* Ensure all tabs have the same size */
+    text-align: center;
+    /* Center text within each tab */
+    font-weight: 600;
+}
+
+.tab.active {
+    color: #000;
+    font-weight: 700;
+}
+
+.tabContent {
+    min-height: 200px;
+}
+
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabela td {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+
+.tabela tr:last-child td {
+    border-bottom: none;
+}
+
+.listaPagamentos {
+    list-style: none;
+    padding: 0;
+    align-items: center;
+    justify-items: center;
+}
+
+.listaPagamentos li {
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+
+.botaoFechar {
+    padding-block-start: 5px;
+    padding-block-end: 2px;
+    padding-inline: 5px;
+    background: #ffffff;
+    border: none;
+    border-radius: 300px;
+    cursor: pointer;
+    float: right;
+    transition: background-color 0.3s;
+}
+
+.botaoFechar:hover {
+    background: rgb(221, 221, 221);
+}
+
+
+.closeIcon {
+    height: 20px;
+    width: 20px;
+}
+
+
+.horiRule {
+    border: 0;
+    height: 1.6px;
+    background-color: rgb(209, 209, 209);
+    margin: 1rem 0;
+}
+
+.ruleInfo {
+    border: 0;
+    height: 1.6px;
+    background-color: rgb(209, 209, 209);
+    margin: 2rem 0;
+}
+
+.tabelaBody {
+    text-align: center;
+}
+
+.hoje {
+    background-color: #eaeaea;
+}
+
+.modalHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.8rem;
+    padding-inline: 1rem;
+}
+
+.simpleIcon {
+    height: 20px;
+    width: 20px;
+    padding-top: 5px;
+    padding-inline-end: 5px;
+}
+
+
+.instaIcon {
+    height: 32px;
+    width: 32px;
+    padding-inline-end: 5px;
+}
+
+.logo {
+    height: 95px;
+    width: 95px;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    margin-block-start: 15px;
+    margin-block-end: 35px;
+    border-radius: 5px;
+}
+
+.texto {
+    display: grid;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    gap: 25px;
+}
+
+.instaLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    padding-right: 25px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+}
+
+.infoText{
+    margin-block: 20px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 550;
+}
+
+.contato {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.contatoItem {
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 8px;
+    border: solid 3px #005268;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    font-size: 14px;
+    color: #005268;
+    transition: 0.2s;
+}
+
+.contatoItem:hover {
+    background-color: #005268;
+    color: #ffffff;
+}
+
+.contactIcon {
+    height: 26px;
+    width: 26px;
+    padding-inline-end: 5px;
+    align-items: center;
+}
+
+
+/* Estilo para o conteúdo da aba "Sobre" */
+.conteudoSobre {
+    height: calc(100% - 90vh); /* Altura dinâmica baseada no espaço disponível */
+    overflow-y: auto; /* Habilita a barra de rolagem vertical */
+  }
+  
+  /* Estilizando a barra de rolagem */
+  .conteudoSobre::-webkit-scrollbar {
+    width: 6px; /* Largura da barra de rolagem */
+    justify-content: right;
+  }
+  
+  .conteudoSobre::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Cor de fundo da barra de rolagem */
+    border-radius: 4px;
+  }
+  
+  .conteudoSobre::-webkit-scrollbar-thumb {
+    background: #afafaf; /* Cor do "ponteiro" da barra de rolagem */
+    border-radius: 4px;
+  }
+  
+  .conteudoSobre::-webkit-scrollbar-thumb:hover {
+    background: #949494; /* Cor do "ponteiro" ao passar o mouse */
+  }
+  
+  /* Ajustes para o modal */
+  .modalContent {
+    max-height: 90vh; /* Altura máxima do modal */
+    overflow: hidden; /* Impede que o conteúdo do modal ultrapasse os limites */
+    display: flex;
+    flex-direction: column;
+    padding-block-end: 50px; /* Espaçamento inferior */
+  }
+  
+  .tabContent {
+    flex: 1; /* Faz o conteúdo da aba ocupar o espaço restante */
+    overflow: hidden; /* Impede que o conteúdo ultrapasse os limites */
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sobreContent {
+    padding-inline: 50px;
+  }

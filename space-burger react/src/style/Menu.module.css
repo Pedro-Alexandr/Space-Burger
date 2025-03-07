@@ -1,0 +1,96 @@
+.menu {
+  color: white;
+  padding-block-end: 60px;
+  font-size: 25px;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+  position: relative; /* Adicionado */
+  z-index: 0; /* Adicionado */
+}
+
+.imgMenu {
+  position: relative;
+  width: 100%;
+  height: 600px; /* Define a altura máxima */
+  overflow: hidden;
+  z-index: 1; /* Adicionado */
+}
+
+.imgMenu img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz a imagem preencher o espaço */
+}
+
+.overlayMenu {
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 600px;
+  background: rgba(255, 255, 255, 0.9); /* Fundo escuro */
+  z-index: 2; /* Ajustado */
+}
+
+.overlayContentMenu {
+  position: absolute; 
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  z-index: 3; /* Ajustado */
+  width: 100%;
+}
+
+.overlayContentMenu h1 {
+  margin: 0;
+  padding: 10px;
+  padding-bottom: 50px;
+  font-size: 55px;
+  color: #005268;
+}
+
+.categories {
+  margin-block: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 0px;
+  justify-items: center;
+  align-items: center;
+  list-style-type: none!important;
+  font-size: 20px;
+  font-weight: 800;
+  z-index: 1; /* Adicionado */
+}
+
+.categories img {
+  width: 250px; /* Define a largura fixa para todas as imagens */
+  height: 170px; /* Define a altura fixa para todas as imagens */
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.catItem img:hover {
+  transform: scale(1.1); /* Aumenta a imagem em 10% */
+  transition: transform 0.5s; /* Animação de 0.5 segundos */
+}
+
+.catItem img {
+  transition: transform 0.5s; /* Animação de 0.5 segundos para voltar ao estado original */
+}
+
+.catItem {
+  margin-inline: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  gap: 20px;
+  color: #005268;
+  z-index: 1; /* Adicionado */
+}
