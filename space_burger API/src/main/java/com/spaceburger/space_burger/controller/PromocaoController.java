@@ -1,86 +1,28 @@
 package com.spaceburger.space_burger.controller;
 
-import java.util.Set;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
+import com.spaceburger.space_burger.repository.PromocaoRepository;
 
-import com.spaceburger.space_burger.entity.Product;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(name = "promocao")
+@RestController
 public class PromocaoController {
+    
+    private final PromocaoRepository promocaoRepository;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
-    @Column
-    private String diaSemana;
-
-    @OneToMany(mappedBy = "promocao")
-    private Set<Product> products;
-
-    @Column
-    private double discount;
-
-    @Column
-    private String description;
-
-    @Column
-    private Boolean active;
-
-    // Getters and Setters
-    public int getId() {
-        return id;
+    public PromocaoController(PromocaoRepository promocaoRepository) {
+        this.promocaoRepository = promocaoRepository;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @GetMapping("/promocao")
+    public ResponseEntity<?> getAll() {
+        return new ResponseEntity<>(promocaoRepository.findAll(), HttpStatus.OK);
     }
-
-    public String getDiaSemana() {
-        return diaSemana;
-    }
-
-    public void setDiaSemana(String diaSemana) {
-        this.diaSemana = diaSemana;
-    }
-
-    public Set<Product> getProducts() {
-        return products;
-    }
-
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
-
-    public double getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(double discount) {
-        this.discount = discount;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
+    
+    @GetMapping("promocao/nome/{nome}")
+    public ResponseEntity<?> getByNome(@PathVariable String nome) {
+        return new ResponseEntity<>(promocaoRepository.findByNomeLike("%" + nome + "%"), HttpStatus.OK);
     }
 }
