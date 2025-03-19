@@ -37,12 +37,12 @@ public class UsuarioController {
         return new ResponseEntity<>(usuarioRepository.findByTelefone(telefone), HttpStatus.OK);
     }
 
-    @GetMapping("usuario/telefone/{telefone}")
+    @GetMapping("usuario/telefone/greater/{telefone}")
     public ResponseEntity<?> getByTelefoneGreaterThan(@PathVariable Integer telefone) {
         return new ResponseEntity<>(usuarioRepository.findByTelefoneGreaterThan(telefone), HttpStatus.OK);
     }
 
-    @GetMapping("usuario/telefone/{telefone}")
+    @GetMapping("usuario/telefone/less/{telefone}")
     public ResponseEntity<?> getByTelefoneLessThan(@PathVariable Integer telefone) {
         return new ResponseEntity<>(usuarioRepository.findByTelefoneLessThan(telefone), HttpStatus.OK);
     }

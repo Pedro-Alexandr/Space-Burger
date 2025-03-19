@@ -58,9 +58,9 @@ public class PedidoController {
         return new ResponseEntity<>(pedidoRepository.findByUsuario_NomeContaining(usuarioNome), HttpStatus.OK);
     }
 
-    @GetMapping("pedido/usuario/{usuario}")
-    public ResponseEntity<?> getByUsuarioId(@PathVariable int Usuario_IdStart, @PathVariable int Usuario_IdEnd) {
-        return new ResponseEntity<>(pedidoRepository.findByUsuario_IdBetween(Usuario_IdStart, Usuario_IdEnd), HttpStatus.OK);
+    @GetMapping("pedido/usuario/id/{usuario}")
+    public ResponseEntity<?> getByUsuarioId(@PathVariable int usuario_IdStart, @PathVariable int usuario_IdEnd) {
+        return new ResponseEntity<>(pedidoRepository.findByUsuario_IdBetween(usuario_IdStart, usuario_IdEnd), HttpStatus.OK);
     }
 
     @GetMapping("pedido/status/{status}")
