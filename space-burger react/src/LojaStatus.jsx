@@ -52,7 +52,7 @@ function verificarHorario() {
     for (let i = 1; i < 7; i++) {
       const proximoDia = diasSemana[(agora.getDay() + i) % 7];
       if (horariosFuncionamento[proximoDia]) {
-        return `Fechado. Abrimos ${proximoDia} às ${horariosFuncionamento[proximoDia].abre}`;
+        return `Fechado. Aberto ${proximoDia} às ${horariosFuncionamento[proximoDia].abre}`;
       }
     }
     return "Fechado";

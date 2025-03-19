@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
-import "./style/Loader.css";
+import { useState, useEffect, useRef } from "react";
+import styles from "./style/Loader.module.css";
 
 const Loader = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
+  const loadingScreenRef = useRef(null);
 
   useEffect(() => {
     const handleLoad = () => {
-      setTimeout(() => setIsLoading(false), 900);
+      setTimeout(() => setIsLoading(false), 500);
     };
 
     if (document.readyState === "complete") {
@@ -18,13 +20,23 @@ const Loader = () => {
     return () => window.removeEventListener("load", handleLoad);
   }, []);
 
-  if (!isLoading) return null;
+  useEffect(() => {
+    if (!isLoading && loadingScreenRef.current) {
+      loadingScreenRef.current.classList.add(styles.fadeOut);
+
+      loadingScreenRef.current.addEventListener("transitionend", () => {
+        setIsVisible(false);
+      });
+    }
+  }, [isLoading]);
+
+  if (!isVisible) return null;
 
   return (
-    <div className="loading-screen">
-      <div className="loader-container">
-        <div className="loader"></div>  {/* Letreiro girando */}
-        <div className="loader2"></div> {/* Logo fixa */}
+    <div ref={loadingScreenRef} className={styles.loadingScreen}>
+      <div className={styles.loaderContainer}>
+        <div className={styles.loader}></div>
+        <div className={styles.loader2}></div>
       </div>
     </div>
   );
