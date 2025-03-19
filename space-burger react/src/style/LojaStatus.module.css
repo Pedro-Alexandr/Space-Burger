@@ -22,7 +22,7 @@
 }
 
 .aberto {
-    color: green;
+    color: rgb(6, 202, 6);
     list-style: none !important;
 
 }
@@ -182,7 +182,8 @@
 }
 
 .hoje {
-    background-color: #eaeaea;
+    background-color: #016480cb;
+    color: rgb(230, 227, 227);
 }
 
 .modalHeader {
@@ -308,7 +309,7 @@
   }
   
   .conteudoSobre::-webkit-scrollbar-thumb:hover {
-    background: #949494; /* Cor do "ponteiro" ao passar o mouse */
+    background: #005268; /* Cor do "ponteiro" ao passar o mouse */
   }
   
   /* Ajustes para o modal */
