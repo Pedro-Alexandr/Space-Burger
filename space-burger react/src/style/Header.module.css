@@ -44,6 +44,8 @@
     justify-content: center; /* Center elements horizontally */
     align-items: center; /* Center elements vertically */
     transition: background-color 0.25s;
+    cursor: pointer;
+    user-select: none;
 }
 
 .navLink:hover {

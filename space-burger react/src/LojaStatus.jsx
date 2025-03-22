@@ -8,7 +8,7 @@ const horariosFuncionamento = {
   quarta: { abre: "17:59", fecha: "22:59" },
   quinta: { abre: "17:59", fecha: "22:59" },
   sexta: { abre: "17:59", fecha: "22:59" },
-  sabado: { abre: "17:59", fecha: "22:59" },
+  sábado: { abre: "17:59", fecha: "22:59" },
   domingo: { abre: "17:59", fecha: "22:59" },
 };
 
@@ -20,7 +20,7 @@ function verificarHorario() {
     "quarta",
     "quinta",
     "sexta",
-    "sabado",
+    "sábado",
   ];
 
   const agora = new Date();
