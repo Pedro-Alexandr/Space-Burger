@@ -143,7 +143,7 @@ function Modal({ isOpen, onClose }) {
                         <h3 className={styles.infoText}>Contato</h3>
 
                         <div className={styles.contato}>
-                        <a
+                          <a
                             className={styles.contatoItem}
                             href="https://web.whatsapp.com/send?phone=5561992918427"
                             onMouseEnter={() => setIsHoveredWpp(true)} // Atualiza o estado ao entrar no elemento
@@ -164,14 +164,14 @@ function Modal({ isOpen, onClose }) {
                             )}
                             Nosso Whatsapp
                           </a>
-                          
+
                           <a
                             className={styles.contatoItem}
                             href="tel:(61) 992918427"
                             onMouseEnter={() => setIsHoveredTel(true)} // Atualiza o estado ao entrar no elemento
                             onMouseLeave={() => setIsHoveredTel(false)} // Atualiza o estado ao sair do elemento
                           >
-                            {isHoveredTel? (
+                            {isHoveredTel ? (
                               <img
                                 className={styles.contactIcon}
                                 src="./src/assets/favicons/phone-active.svg"
@@ -274,13 +274,9 @@ export default function LojaStatus() {
 
   return (
     <>
-      <a className={styles.length} href="#" onClick={openModal}>
+      <div className={styles.length} onClick={openModal}>
         <ul className={styles.container}>
-          <a className={styles.item} href="#" onClick={(e) => e.preventDefault()}>
-            <li className={Cor}>
-              {status}
-            </li>
-          </a>
+          <li className={Cor}>{status}</li>
           <li>
             <a className={styles.item} href="#" onClick={(e) => e.preventDefault()}>
               <img className={styles.icon} src="./src/assets/favicons/map-pin.svg" alt="Local" /> Brasília - DF
@@ -292,7 +288,8 @@ export default function LojaStatus() {
             </a>
           </li>
         </ul>
-      </a>
+      </div>
+
 
       <Modal isOpen={isModalOpen} onClose={closeModal} />
     </>
