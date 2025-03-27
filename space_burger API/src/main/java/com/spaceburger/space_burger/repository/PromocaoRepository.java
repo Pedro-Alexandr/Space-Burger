@@ -15,4 +15,6 @@ public interface PromocaoRepository extends JpaRepository<Promocao, Integer> {
     
     ArrayList<Promocao> findByNomeLike(String nome); 
 
+    ArrayList<Promocao> findByDiaSemana_DiaContaining(String DiaSemanaDia);
+
 }

@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -24,7 +26,10 @@ public class Promocao {
     private String descricao;
 
     @Column
-    private double valor;
+    private double valorDesconto;
+
+    @Column
+    private double valorPadrao;
 
     @Column
     private String dia;
@@ -35,8 +40,12 @@ public class Promocao {
     @OneToMany(mappedBy = "promocao")
     private Set<Produto> produtos;
 
+    @ManyToOne
+    @JoinColumn(name = "dia_semana_id", referencedColumnName = "id")
+    private DiaSemana diaSemana;
+
     public String exibirDados() {
-        return getId() + getNome() + getDescricao() + getValor() + getDia() + getStatus() + getProdutos();
+        return getId() + getNome() + getDescricao() + getValorPadrao() + getValorDesconto() + getDia() + getStatus() + getProdutos() + getDiaSemana();
     }
 
     // Getters and Setters
@@ -54,14 +63,6 @@ public class Promocao {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
     }
 
     public String getStatus() {
@@ -94,5 +95,29 @@ public class Promocao {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public DiaSemana getDiaSemana() {
+        return diaSemana;
+    }
+
+    public void setDiaSemana(DiaSemana diaSemana) {
+        this.diaSemana = diaSemana;
+    }
+
+    public double getValorDesconto() {
+        return valorDesconto;
+    }
+
+    public void setValorDesconto(double valorDesconto) {
+        this.valorDesconto = valorDesconto;
+    }
+
+    public double getValorPadrao() {
+        return valorPadrao;
+    }
+
+    public void setValorPadrao(double valorPadrao) {
+        this.valorPadrao = valorPadrao;
     }
 }

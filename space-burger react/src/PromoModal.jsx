@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./style/PromoModal.module.css";
+import Api from './Api.jsx';
 
 // Função para obter o dia da semana atual em português
 const getDiaAtual = () => {
@@ -18,25 +19,6 @@ const getDiaAtual = () => {
   return dias[hoje];
 };
 
-// Simulação de dados do banco de dados (substitua pela sua API real)
-const carregarPromocoes = async () => {
-  setLoading(true);
-  const dia = getDiaAtual();
-  setDiaAtual(dia.charAt(0).toUpperCase() + dia.slice(1));
-  
-  try {
-    const response = await fetch(`/api/promocoes?dia=${dia}`);
-    if (!response.ok) throw new Error("Erro na requisição");
-    const promocoesDoDia = await response.json();
-    setPromocoes(promocoesDoDia);
-  } catch (error) {
-    console.error("Erro ao carregar promoções:", error);
-    setPromocoes([]);
-  } finally {
-    setLoading(false);
-  }
-};
-
 const PromoModal = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -45,6 +27,7 @@ const PromoModal = () => {
   const [promocoes, setPromocoes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [diaAtual, setDiaAtual] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setIsMounted(true);
@@ -52,29 +35,30 @@ const PromoModal = () => {
     if (location.hash === "#promocoes") {
       setIsOpen(true);
       carregarPromocoes();
-      document.body.style.overflow = 'hidden';
     } else {
       setIsOpen(false);
-      document.body.style.overflow = '';
     }
   }, [location]);
 
   const carregarPromocoes = async () => {
     setLoading(true);
+    setError(null);
     const dia = getDiaAtual();
-    setDiaAtual(dia.charAt(0).toUpperCase() + dia.slice(1)); // Formatação do nome do dia
+    setDiaAtual(dia.charAt(0).toUpperCase() + dia.slice(1));
     
     try {
-      // Simulando requisição à API
-      const promocoesDoDia = promocoesPorDia[dia] || [];
+      // Chamada com Axios
+      const response = await Api.get(`/promocoes/dia_semana?dia=${dia}`);
       
-      // Em um caso real, você faria:
-      // const response = await fetch(`/api/promocoes?dia=${dia}`);
-      // const promocoesDoDia = await response.json();
-      
-      setPromocoes(promocoesDoDia);
-    } catch (error) {
-      console.error("Erro ao carregar promoções:", error);
+      // Verifica se a resposta tem dados válidos
+      if (response.data && Array.isArray(response.data)) {
+        setPromocoes(response.data);
+      } else {
+        throw new Error("Formato de dados inválido");
+      }
+    } catch (err) {
+      console.error("Erro ao carregar promoções:", err);
+      setError("Erro ao carregar promoções. Tente novamente mais tarde.");
       setPromocoes([]);
     } finally {
       setLoading(false);
@@ -116,6 +100,8 @@ const PromoModal = () => {
               <div className={styles.modalBody}>
                 {loading ? (
                   <p>Carregando promoções...</p>
+                ) : error ? (
+                  <p className={styles.errorMessage}>{error}</p>
                 ) : promocoes.length > 0 ? (
                   <div className={styles.promoCards}>
                     {promocoes.map(promo => (
