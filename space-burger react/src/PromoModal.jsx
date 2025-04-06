@@ -35,8 +35,10 @@ const PromoModal = () => {
     if (location.hash === "#promocoes") {
       setIsOpen(true);
       carregarPromocoes();
+      document.body.style.overflow = 'hidden';
     } else {
       setIsOpen(false);
+      document.body.style.overflow = '';
     }
   }, [location]);
 
@@ -58,7 +60,6 @@ const PromoModal = () => {
       }
     } catch (err) {
       console.error("Erro ao carregar promoções:", err);
-      setError("Erro ao carregar promoções. Tente novamente mais tarde.");
       setPromocoes([]);
     } finally {
       setLoading(false);
@@ -109,14 +110,14 @@ const PromoModal = () => {
                         {promo.imagem && (
                           <img 
                             src={promo.imagem} 
-                            alt={promo.titulo}
+                            alt={promo.nome}
                             className={styles.promoImage}
                             onError={(e) => {
                               e.target.style.display = 'none';
                             }}
                           />
                         )}
-                        <h3>{promo.titulo}</h3>
+                        <h3>{promo.nome}</h3>
                         <p>{promo.descricao}</p>
                         {promo.regras && (
                           <div className={styles.promoRegras}>

@@ -1,5 +1,7 @@
 package com.spaceburger.space_burger.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -34,15 +36,12 @@ public class Produto {
     private String imagem;
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name="categoria_id", referencedColumnName = "id")
     private Categoria categoria;
 
-    @ManyToOne
-    @JoinColumn(name="promocao_id", referencedColumnName = "id")
-    private Promocao promocao;
-
     public String exibirDados() {
-        return getId() + getNome() + getDescricao() + getPreco() + getImagem() + getCategoria() + getPromocao();
+        return getId() + getNome() + getDescricao() + getPreco() + getImagem() + getCategoria();
     }
 
     // Getters and Setters
@@ -92,13 +91,5 @@ public class Produto {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
-    }
-
-    public Promocao getPromocao() {
-        return promocao;
-    }
-
-    public void setPromocao(Promocao promocao) {
-        this.promocao = promocao;
     }
 }

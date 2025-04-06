@@ -23,7 +23,7 @@ public class DiaSemana {
     @Column
     private String dia;
 
-    @OneToMany(mappedBy = "dia")
+    @OneToMany(mappedBy = "nome")
     private Set<Promocao> promocoes;
 
     public int getId() {

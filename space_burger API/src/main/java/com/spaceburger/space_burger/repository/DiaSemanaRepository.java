@@ -12,7 +12,7 @@ public interface DiaSemanaRepository extends JpaRepository<DiaSemana, Integer> {
     @Override
     ArrayList<DiaSemana> findAll();
     
-    ArrayList<DiaSemana> findByDiaLike(String dia);
+    ArrayList<DiaSemana> findById(int id); 
 
 }
 

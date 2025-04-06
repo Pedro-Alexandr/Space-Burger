@@ -1,6 +1,6 @@
 package com.spaceburger.space_burger.entity;
 
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,26 +25,25 @@ public class Promocao {
     private String descricao;
 
     @Column
+    private String imagem;
+
+    @Column
     private double valorDesconto;
 
     @Column
     private double valorPadrao;
 
-    @Column
-    private String dia;
-
-    @Column
-    private String status;
-
-    @OneToMany(mappedBy = "promocao")
-    private Set<Produto> produtos;
-
     @ManyToOne
-    @JoinColumn(name = "dia_semana_id", referencedColumnName = "id")
+    @JoinColumn(name = "dia_semana_id")
     private DiaSemana diaSemana;
 
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name="categoria_id", referencedColumnName = "id")
+    private Categoria categoria;
+
     public String exibirDados() {
-        return getId() + getNome() + getDescricao() + getValorPadrao() + getValorDesconto() + getDia() + getStatus() + getProdutos() + getDiaSemana();
+        return getId() + getNome() + getDescricao() + getImagem() + getValorPadrao() + getValorDesconto() + getDiaSemana() + getCategoria();
     }
 
     // Getters and Setters
@@ -63,30 +61,6 @@ public class Promocao {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getDia() {
-        return dia;
-    }
-
-    public void setDia(String dia) {
-        this.dia = dia;
-    }
-
-    public Set<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(Set<Produto> produtos) {
-        this.produtos = produtos;
     }
 
     public String getNome() {
@@ -119,5 +93,21 @@ public class Promocao {
 
     public void setValorPadrao(double valorPadrao) {
         this.valorPadrao = valorPadrao;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }

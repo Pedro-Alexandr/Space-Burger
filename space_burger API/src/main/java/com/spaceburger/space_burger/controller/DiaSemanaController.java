@@ -24,8 +24,8 @@ public class DiaSemanaController {
         return new ResponseEntity<>(diaSemanaRepository.findAll(), HttpStatus.OK);
     }
     
-    @GetMapping("dia_semana/dia/{dia}")
-    public ResponseEntity<?> getByDia(@PathVariable String dia) {
-        return new ResponseEntity<>(diaSemanaRepository.findByDiaLike("%" + dia + "%"), HttpStatus.OK);
+    @GetMapping("dia_semana/id/{id}")
+    public ResponseEntity<?> getById(@PathVariable int id) {
+        return new ResponseEntity<>(diaSemanaRepository.findById(id), HttpStatus.OK);
     }
 }
