@@ -10,11 +10,12 @@ const Catalog = () => {
             const responseCat = await Api.get(`/categoria`);
 
             if (Array.isArray(responseCat.data)) {
-                // Filtra categorias que possuem pelo menos 1 produto
-                const categoriasComProdutos = responseCat.data.filter(
-                    (categoria) => categoria.produtos && categoria.produtos.length > 0
+                const categoriasValidas = responseCat.data.filter(
+                    (categoria) =>
+                        (categoria.produtos && categoria.produtos.length > 0) ||
+                        (categoria.promocoes && categoria.promocoes.length > 0)
                 );
-                setCategorias(categoriasComProdutos);
+                setCategorias(categoriasValidas);
             } else {
                 throw new Error("Formato de dados inválido");
             }
@@ -34,28 +35,59 @@ const Catalog = () => {
                 <div key={categoria.id} className={styles.categoriaSection}>
                     <h2 className={styles.categoriaTitulo}>{categoria.nome}</h2>
                     <p className={styles.categoriaDesc}>{categoria.descricao}</p>
+
                     <div className={styles.prodCards}>
-                        {categoria.produtos.map((prod) => (
-                            <div key={prod.id} className={styles.prodCard}>
-                                {prod.imagem && (
-                                    <img
-                                        src={prod.imagem}
-                                        alt={prod.nome}
-                                        className={styles.prodImage}
-                                        onError={(e) => {
-                                            e.target.style.display = 'none';
-                                        }}
-                                    />
-                                )}
-                                <h3>{prod.nome}</h3>
-                                <p>{prod.descricao}</p>
-                                {prod.preco > 0 && (
-                                    <p>
-                                        R$ {prod.preco.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
-                                    </p>
-                                )}
-                            </div>
-                        ))}
+                        {(categoria.produtos || categoria.promocoes)?.map((item) => {
+                            const isPromocao = categoria.promocoes?.some((promo) => promo.id === item.id);
+
+                            return (
+                                <div key={item.id} className={styles.prodCard}>
+                                    <div className={styles.prodInfo}>
+                                        <h3>{item.nome}</h3>
+                                        <p className={styles.truncateDescription}>{item.descricao}</p>
+
+                                        {isPromocao ? (
+                                            <div className={styles.preco}>
+                                                <p className={styles.precoDesconto}>
+                                                    R$ {item.valorDesconto?.toLocaleString('pt-BR', {
+                                                        minimumFractionDigits: 2,
+                                                        maximumFractionDigits: 2,
+                                                    })}
+                                                </p>
+                                                <p className={styles.precoPadrao}>
+                                                    R$ {item.valorPadrao?.toLocaleString('pt-BR', {
+                                                        minimumFractionDigits: 2,
+                                                        maximumFractionDigits: 2,
+                                                    })}
+                                                </p>
+                                            </div>
+                                        ) : (
+                                            item.preco > 0 && (
+                                                <p className={styles.preco}>
+                                                    R$ {item.preco?.toLocaleString('pt-BR', {
+                                                        minimumFractionDigits: 2,
+                                                        maximumFractionDigits: 2,
+                                                    })}
+                                                </p>
+                                            )
+                                        )}
+                                    </div>
+
+                                    <div className={styles.prodImageWrapper}>
+                                        {item.imagem && (
+                                            <img
+                                                src={item.imagem}
+                                                alt={item.nome}
+                                                className={styles.prodImage}
+                                                onError={(e) => {
+                                                    e.target.style.display = 'none';
+                                                }}
+                                            />
+                                        )}
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             ))}

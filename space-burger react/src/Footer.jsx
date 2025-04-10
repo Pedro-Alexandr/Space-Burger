@@ -20,14 +20,16 @@ const Footer = () => {
                 <p>Entre em contato: (61) 99291-8427</p>
             </div>
             <div className={footerSocial}>
-                <a className={socialLinkClass} href="https://wa.link/tk3rcq" target="_blank" rel="noreferrer">
-                    <img className={socialImgClass} src="./src/assets/social icons/fb-icon.svg" alt="Facebook"></img>
+                <a className={style.socialLink} href="tel:(61) 992918427" target="_blank" rel="noreferrer">
+                    <img className={socialImgClass} src="./src/assets/favicons/whatsapp-active.svg" alt="Telefone"></img>
                 </a>
-                <a className={style.socialLink} href="https://www.instagram.com/" target="_blank" rel="noreferrer">
-                    <img className={socialImgClass} src="./src/assets/social icons/instagram-icon.svg" alt="Instagram"></img>
+
+                <a className={style.socialLink} href="https://www.instagram.com/spaceburgerdf/" target="_blank" rel="noreferrer">
+                    <img className={socialImgClass} src="./src/assets/favicons/instagram-icon.svg" alt="Instagram"></img>
                 </a>
-                <a className={style.socialLink} href="https://twitter.com/" target="_blank" rel="noreferrer">
-                    <img className={socialImgClass} src="./src/assets/social icons/xtwitter-icon.svg" alt="Twitter"></img>
+
+                <a className={socialLinkClass} href="https://web.whatsapp.com/send?phone=5561992918427" target="_blank" rel="noreferrer">
+                    <img className={socialImgClass} src="./src/assets/favicons/phone-active.svg" alt="Whatsapp"></img>
                 </a>
             </div>
         </footer>

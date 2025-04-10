@@ -32,7 +32,6 @@ function App() {
                 <main className="content">
                   <Video />
                   <LojaStatus />
-                  <Menu />
                   <Catalog />
                   <Footer />
                 </main>

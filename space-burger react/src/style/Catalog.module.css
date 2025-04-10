@@ -1,15 +1,24 @@
 .catalogContainer {
     padding: 1rem;
+    margin-inline: 120px;
 }
 
-.categoriaSecao {
+.categoriaSection {
     margin-bottom: 2rem;
 }
 
 .categoriaTitulo {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.8rem;
     color: #333;
+}
+
+.categoriaDesc {
+    font-size: large;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: #666;
+    max-width: 920px;
 }
 
 .prodCards {
@@ -18,17 +27,85 @@
     gap: 1rem;
 }
 
+/* CARD */
 .prodCard {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1rem;
-    width: 200px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    width: 36%;
+    max-width: 700px;
     background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 12px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.prodCard:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-color: #ccc;
+}
+
+/* TEXTOS */
+.prodInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* força o espaçamento entre topo e preço */
+    padding: 1rem;
+}
+
+.truncateDescription {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    line-height: 1.4;
+    max-height: calc(1.4em * 3);
+    word-break: break-word;
+    margin-block-start: .8rem;
+    margin-block-end: 1rem;
+    color : #555;
+    font-weight: 500;
+}
+
+.preco {
+    margin-top: auto;
+    font-weight: bold;
+    color: #222;
+}
+
+/* IMAGEM */
+.prodImageWrapper {
+    width: 140px;
+    height: auto;
+    flex-shrink: 0;
 }
 
 .prodImage {
     width: 100%;
-    height: auto;
+    height: 100%;
     object-fit: cover;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    display: block;
+}
+
+.precoDesconto {
+    font-weight: bold;
+    color: #35a983; /* Cor do preço promocional */
+    margin-right: 0.5rem; /* Espaço entre os preços */
+    margin-top: auto;
+}
+
+.precoPadrao {
+    text-decoration: line-through;
+    color: #999; /* Cor do preço original */
+    font-size: 0.9rem; /* Tamanho menor para o preço original */
 }

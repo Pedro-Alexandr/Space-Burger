@@ -31,7 +31,7 @@ const PromoModal = () => {
 
   useEffect(() => {
     setIsMounted(true);
-    
+
     if (location.hash === "#promocoes") {
       setIsOpen(true);
       carregarPromocoes();
@@ -47,11 +47,11 @@ const PromoModal = () => {
     setError(null);
     const dia = getDiaAtual();
     setDiaAtual(dia.charAt(0).toUpperCase() + dia.slice(1));
-    
+
     try {
       // Chamada com Axios
       const response = await Api.get(`/promocoes/dia_semana?dia=${dia}`);
-      
+
       // Verifica se a resposta tem dados válidos
       if (response.data && Array.isArray(response.data)) {
         setPromocoes(response.data);
@@ -77,7 +77,7 @@ const PromoModal = () => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className={styles.modalOverlay}
+          className={`${styles.modalOverlay} ${styles.modalOverlayBG}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -97,33 +97,52 @@ const PromoModal = () => {
                   &times;
                 </button>
               </div>
-              
+
               <div className={styles.modalBody}>
                 {loading ? (
                   <p>Carregando promoções...</p>
                 ) : error ? (
                   <p className={styles.errorMessage}>{error}</p>
                 ) : promocoes.length > 0 ? (
-                  <div className={styles.promoCards}>
-                    {promocoes.map(promo => (
-                      <div key={promo.id} className={styles.promoCard}>
-                        {promo.imagem && (
-                          <img 
-                            src={promo.imagem} 
-                            alt={promo.nome}
-                            className={styles.promoImage}
-                            onError={(e) => {
-                              e.target.style.display = 'none';
-                            }}
-                          />
-                        )}
-                        <h3>{promo.nome}</h3>
-                        <p>{promo.descricao}</p>
-                        {promo.regras && (
-                          <div className={styles.promoRegras}>
-                            <small>{promo.regras}</small>
-                          </div>
-                        )}
+                  <div className={styles.prodCards}>
+                    {(promocoes)?.map((item) => (
+                      <div key={item.id} className={styles.prodCard}>
+                        <div className={styles.prodInfo}>
+                          <h3>{item.nome}</h3>
+                          <p className={styles.truncateDescription}>{item.descricao}</p>
+                          {item.valorPadrao && item.valorDesconto > 0 && (
+                            <div className={styles.preco}>
+                              <p className={styles.precoDesconto}>
+                                R$ {item.valorDesconto.toLocaleString('pt-BR', {
+                                  minimumFractionDigits: 2,
+                                  maximumFractionDigits: 2,
+                                })}
+                              </p>
+
+                              <p className={styles.precoPadrao}>
+                                R$ {item.valorPadrao.toLocaleString('pt-BR', {
+                                  minimumFractionDigits: 2,
+                                  maximumFractionDigits: 2,
+                                })}
+                              </p>
+                            </div>
+
+                          )}
+                        </div>
+
+                        <div className={styles.prodImageWrapper}>
+                          {item.imagem && (
+                            <img
+                              src={item.imagem}
+                              alt={item.nome}
+                              className={styles.prodImage}
+                              onError={(e) => {
+                                e.target.style.display = 'none';
+                              }}
+                            />
+                          )}
+                        </div>
+
                       </div>
                     ))}
                   </div>

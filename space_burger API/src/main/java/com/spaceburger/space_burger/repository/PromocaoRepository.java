@@ -21,6 +21,7 @@ public interface PromocaoRepository extends JpaRepository<Promocao, Integer> {
     @Query("SELECT p FROM Promocao p WHERE p.diaSemana.dia = :dia")
     ArrayList<Promocao> findByDiaSemanaDia(@Param("dia") String dia);
 
-    List<Promocao> findByDiaSemana_DiaIgnoreCase(String diaSemana);
+    List<Promocao> findByDiaSemana_Id(int id);
+
 }
 

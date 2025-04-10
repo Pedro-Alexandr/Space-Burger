@@ -34,24 +34,22 @@ public class CategoriaController {
     public ResponseEntity<?> getAll() {
         List<Categoria> categorias = categoriaRepository.findAll();
 
-        // Obtém o nome do dia da semana atual (ex: MONDAY)
-        String diaSemanaAtual = LocalDate.now().getDayOfWeek().name();
+        // Java: 1 = Monday, 7 = Sunday | Banco: 1 = Domingo, 7 = Sabado
+        int diaSemanaId = LocalDate.now().getDayOfWeek().getValue();
+        diaSemanaId = diaSemanaId == 7 ? 1 : diaSemanaId + 1;
 
-        // Busca as promoções do dia com base no nome do dia da semana
-        List<Promocao> promocoesDoDia = promocaoRepository.findByDiaSemana_DiaIgnoreCase(diaSemanaAtual);
+        // Busca as promoções do dia com base no ID do dia da semana
+        List<Promocao> promocoesDoDia = promocaoRepository.findByDiaSemana_Id(diaSemanaId);
 
-        // Lista que será retornada como resposta
         List<Object> resultadoFinal = new ArrayList<>();
 
         for (Categoria categoria : categorias) {
             if ("BARATOS DO DIA!".equalsIgnoreCase(categoria.getNome())) {
                 if (!promocoesDoDia.isEmpty()) {
-                    // Cria um mapa com as informações da categoria especial + promoções
                     Map<String, Object> categoriaPromocao = new HashMap<>();
                     categoriaPromocao.put("id", categoria.getId());
                     categoriaPromocao.put("nome", categoria.getNome());
                     categoriaPromocao.put("promocoes", promocoesDoDia);
-
                     resultadoFinal.add(categoriaPromocao);
                 }
             } else {
