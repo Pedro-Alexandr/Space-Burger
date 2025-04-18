@@ -1,6 +1,14 @@
 .catalogContainer {
     padding: 1rem;
+    padding-block: 2rem;
+    display: flex;
+    flex-direction: column;
+    padding-inline-start: 50px;
     margin-inline: 120px;
+    background-color: #f4f5f7;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-block: 20px;
 }
 
 .categoriaSection {
@@ -31,9 +39,10 @@
 .prodCard {
     display: flex;
     flex-direction: row;
+    gap: 3rem;
     align-items: stretch;
-    width: 36%;
-    max-width: 700px;
+    width: 40%;
+    max-width: 800px;
     background: #fff;
     border-radius: 12px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -83,7 +92,7 @@
 
 /* IMAGEM */
 .prodImageWrapper {
-    width: 140px;
+    width: 200px;
     height: auto;
     flex-shrink: 0;
 }
@@ -109,3 +118,4 @@
     color: #999; /* Cor do preço original */
     font-size: 0.9rem; /* Tamanho menor para o preço original */
 }
+

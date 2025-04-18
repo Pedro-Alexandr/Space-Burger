@@ -6,7 +6,7 @@ import Loader from "./Loader.jsx";
 import Header from "./Header.jsx";
 import Video from "./Video.jsx";
 import LojaStatus from "./LojaStatus.jsx";
-import Menu from "./Menu.jsx";
+import Carousel from "./Carousel.jsx";
 import Catalog from "./Catalog.jsx";
 import Footer from "./Footer.jsx";
 import PromoModal from "./PromoModal.jsx";
@@ -30,8 +30,7 @@ function App() {
               <>
                 <PromoModal />
                 <main className="content">
-                  <Video />
-                  <LojaStatus />
+                  <Carousel />
                   <Catalog />
                   <Footer />
                 </main>

@@ -1,26 +1,42 @@
 body {
-    font-family: "Outfit", serif;
-    font-optical-sizing: auto;
-    font-weight: 650;
-    font-style: normal;
-    background-color: #f4f5f7;
+  font-family: "Outfit", serif;
+  font-optical-sizing: auto;
+  font-weight: 650;
+  font-style: normal;
+  background-color: #005268;
 }
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 
 }
 
 /* O container principal ocupa 100% da altura da tela */
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh; /* Ocupa toda a altura da tela */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* Ocupa toda a altura da tela */
+}
+
+/* O conteúdo principal cresce para ocupar o espaço disponível */
+.content {
+  flex: 1;
+}
+
+/* No seu arquivo global CSS */
+.highlight {
+  animation: highlight 2s ease;
+}
+
+@keyframes highlight {
+  0% {
+    background-color: rgba(255, 107, 0, 0.2);
   }
-  
-  /* O conteúdo principal cresce para ocupar o espaço disponível */
-  .content {
-    flex: 1;
+
+  100% {
+    background-color: transparent;
   }
+}
