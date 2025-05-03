@@ -31,6 +31,7 @@ const Catalog = () => {
 
     return (
         <div className={styles.catalogContainer}>
+            <div className={styles.cardsContainer}>
             {categorias.map((categoria) => (
                 <div key={categoria.id} className={styles.categoriaSection}>
                     <h2 className={styles.categoriaTitulo}>{categoria.nome}</h2>
@@ -91,6 +92,7 @@ const Catalog = () => {
                     </div>
                 </div>
             ))}
+            </div>
         </div>
     );
 };

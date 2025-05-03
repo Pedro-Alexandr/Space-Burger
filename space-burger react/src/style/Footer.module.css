@@ -41,7 +41,7 @@
     padding: 0.625rem; /* 10px */
     padding-inline: 0.9375rem; /* 15px */
     padding-block: 0.9375rem; /* 15px */
-    border-radius: 0.3125rem; /* 5px */
+    border-radius: 6.25rem;
     display: flex;
     justify-content: center; /* Center elements horizontally */
     align-items: center; /* Center elements vertically */
@@ -49,7 +49,7 @@
 }
 
 .socialLink:hover {
-    background-color: #007399;
+    background-color: #004d67;
 }
 
 .socialImg {
