@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Api from './Api.jsx';
 import styles from './style/Catalog.module.css';
+import Bag from "./Bag.jsx";
 
 const Catalog = () => {
     const [categorias, setCategorias] = useState([]);
@@ -92,6 +93,9 @@ const Catalog = () => {
                     </div>
                 </div>
             ))}
+            </div>
+            <div className={styles.bagContainer}>
+                <Bag />
             </div>
         </div>
     );
