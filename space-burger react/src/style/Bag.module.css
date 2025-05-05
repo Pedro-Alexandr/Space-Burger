@@ -13,6 +13,7 @@
     position: sticky;
     top: 50px;
     bottom: 300px;
+    background-color: #f5f5f5;
 }
 
 .containerHeader {
@@ -62,10 +63,11 @@
     color: white;
     padding: 1.2rem;
     padding-inline: 3rem;
-    border-radius: 5px;
+    border-radius: 8px;
     border: none;
     cursor: not-allowed;
     font-size: 18px;
     font-weight: 600;
     font-family: "Outfit", serif;
+    width: 100%;
 }

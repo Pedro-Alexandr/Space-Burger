@@ -2,6 +2,14 @@ import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./style/Carousel.module.css";
 
+// Mapeamento dos títulos dos slides para nomes de categoria do banco
+const titleToCategoryMap = {
+    "OS MAIS VENDIDOS DA SPACE": "os-mais-vendidos-da-space",
+    "COMBOS SMASH": "smash-burger-120g",
+    "COMBOS BURGER 150G": "burgers-150g",
+    "ACOMPANHAMENTOS": "acompanhamentos"
+};
+
 const items = [
     {
         id: 1,
@@ -29,39 +37,29 @@ const items = [
     },
 ];
 
-const TOTAL_SLIDES = items.length;
-
-export default function Carousel() {
-    const [index, setIndex] = useState(1); // começa no primeiro item real (índice 1 por causa dos clones)
+const Carousel = () => {
+    const [index, setIndex] = useState(1);
     const [transition, setTransition] = useState(true);
-    const [startX, setStartX] = useState(0);
-    const [dragX, setDragX] = useState(0);
+    const [dragStartX, setDragStartX] = useState(null);
+    const [dragOffset, setDragOffset] = useState(0);
     const [isDragging, setIsDragging] = useState(false);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const intervalRef = useRef(null);
 
-    const carouselRef = useRef();
+    const fullSlides = [items[items.length - 1], ...items, items[0]];
 
-    const fullSlides = [
-        items[items.length - 1], // clone do último no início
-        ...items,
-        items[0], // clone do primeiro no fim
-    ];
-
-    // Autoplay
     useEffect(() => {
-        const interval = setInterval(() => {
-            next();
-        }, 5000);
-        return () => clearInterval(interval);
+        startAutoPlay();
+        return () => clearInterval(intervalRef.current);
     }, []);
 
-    // Loop visual (sem flicker)
     useEffect(() => {
         if (index === 0) {
             setTimeout(() => {
                 setTransition(false);
-                setIndex(TOTAL_SLIDES);
+                setIndex(items.length);
             }, 300);
-        } else if (index === TOTAL_SLIDES + 1) {
+        } else if (index === items.length + 1) {
             setTimeout(() => {
                 setTransition(false);
                 setIndex(1);
@@ -71,63 +69,77 @@ export default function Carousel() {
         }
     }, [index]);
 
-    // Keyboard support
-    useEffect(() => {
-        const handleKey = (e) => {
-            if (e.key === "ArrowRight") next();
-            if (e.key === "ArrowLeft") prev();
-        };
-        window.addEventListener("keydown", handleKey);
-        return () => window.removeEventListener("keydown", handleKey);
-    }, []);
+    const startAutoPlay = () => {
+        clearInterval(intervalRef.current);
+        intervalRef.current = setInterval(() => {
+            handleNext();
+        }, 5000);
+    };
 
-    const next = () => setIndex((prev) => prev + 1);
-    const prev = () => setIndex((prev) => prev - 1);
+    const handleNext = () => {
+        if (isTransitioning) return;
+        setIsTransitioning(true);
+        setIndex((prev) => prev + 1);
+        setTimeout(() => setIsTransitioning(false), 600);
+    };
 
-    // Drag handlers
-    const handleStart = (e) => {
-        setStartX(e.clientX || e.touches[0].clientX);
+    const handlePrev = () => {
+        if (isTransitioning) return;
+        setIsTransitioning(true);
+        setIndex((prev) => prev - 1);
+        setTimeout(() => setIsTransitioning(false), 600);
+    };
+
+    const handleTouchStart = (e) => {
+        setDragStartX(e.touches[0].clientX);
         setIsDragging(true);
+        clearInterval(intervalRef.current);
         setTransition(false);
     };
 
-    const handleMove = (e) => {
+    const handleTouchMove = (e) => {
         if (!isDragging) return;
-        const clientX = e.clientX || e.touches[0].clientX;
-        const distance = clientX - startX;
-        setDragX(distance);
+        const touchX = e.touches[0].clientX;
+        const offset = touchX - dragStartX;
+        setDragOffset(offset);
     };
 
-    const handleEnd = () => {
+    const handleTouchEnd = () => {
         setIsDragging(false);
         setTransition(true);
 
-        if (dragX > 100) prev();
-        else if (dragX < -100) next();
+        if (dragOffset > 100) {
+            handlePrev();
+        } else if (dragOffset < -100) {
+            handleNext();
+        }
 
-        setDragX(0);
+        setDragOffset(0);
+        startAutoPlay();
     };
 
-    // Style for transform
-    const slideStyle = {
-        transform: `translateX(calc(-${index * 100}% + ${dragX}px))`,
-        transition: transition ? "transform 0.5s ease" : "none",
+    const handleClickPeçaAqui = (title) => {
+        const targetId = titleToCategoryMap[title];
+        const element = document.getElementById(targetId);
+        if (element) {
+            element.scrollIntoView({ behavior: "smooth" });
+        }
     };
 
     return (
         <div
             className={styles.carousel}
-            onMouseDown={handleStart}
-            onMouseMove={handleMove}
-            onMouseUp={handleEnd}
-            onMouseLeave={() => isDragging && handleEnd()}
-            onTouchStart={handleStart}
-            onTouchMove={handleMove}
-            onTouchEnd={handleEnd}
-            ref={carouselRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
         >
-            {/* Slides */}
-            <div className={styles.slider} style={slideStyle}>
+            <div
+                className={styles.slider}
+                style={{
+                    transform: `translateX(calc(-${index * 100}% + ${dragOffset}px))`,
+                    transition: transition ? 'transform 0.5s ease' : 'none',
+                }}
+            >
                 {fullSlides.map((item, i) => (
                     <div className={styles.slide} key={i}>
                         <img src={item.image} alt={item.title} className={styles.image} />
@@ -135,17 +147,19 @@ export default function Carousel() {
                         <div className={styles.content}>
                             <h2 className={styles.title}>{item.title}</h2>
                             <p className={styles.description}>{item.description}</p>
+                            <button className={styles.peçaBtn} onClick={() => handleClickPeçaAqui(item.title)}>
+                                Peça aqui!
+                            </button>
                         </div>
                     </div>
                 ))}
             </div>
 
-            {/* Navegação */}
             <div className={styles.buttons}>
-                <button onClick={prev} className={styles.navButton}>
+                <button onClick={handlePrev} className={styles.navButton}>
                     <ChevronLeft size={24} color="white" />
                 </button>
-                <button onClick={next} className={styles.navButton}>
+                <button onClick={handleNext} className={styles.navButton}>
                     <ChevronRight size={24} color="white" />
                 </button>
             </div>
@@ -162,4 +176,6 @@ export default function Carousel() {
             </div>
         </div>
     );
-}
+};
+
+export default Carousel;

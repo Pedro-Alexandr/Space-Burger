@@ -9,7 +9,7 @@ function Bag() {
                 <img src='src/assets/favicons/bag-noitem.svg' className={styles.containerBodyImg}></img>
                 <p className={styles.containerBody}>Sacola vazia</p>
                 <div className={styles.containerFooter}>
-                <button className={styles.containerFtButton}>Estabelecimento fechado</button>
+                <button className={styles.containerFtButton}>Sacola vazia</button>
                 </div>
         </div>
     );
