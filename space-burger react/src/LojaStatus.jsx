@@ -4,12 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const horariosFuncionamento = {
   segunda: null, // Fechado
-  terça: { abre: "17:55", fecha: "22:55" },
-  quarta: { abre: "17:55", fecha: "22:55" },
-  quinta: { abre: "17:55", fecha: "22:55" },
-  sexta: { abre: "17:55", fecha: "22:55" },
-  sábado: { abre: "17:55", fecha: "22:55" },
-  domingo: { abre: "17:55", fecha: "22:55" },
+  terça: { abre: "17:59", fecha: "22:59" },
+  quarta: { abre: "17:59", fecha: "22:59" },
+  quinta: { abre: "17:59", fecha: "22:59" },
+  sexta: { abre: "17:59", fecha: "22:59" },
+  sábado: { abre: "17:59", fecha: "22:59" },
+  domingo: { abre: "17:59", fecha: "22:59" },
 };
 
 function verificarHorario() {

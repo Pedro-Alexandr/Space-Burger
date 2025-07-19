@@ -68,11 +68,16 @@
   font-size: 1.8rem;
   cursor: pointer;
   color: #666;
-  transition: color 0.2s;
+  transition: 0.2s;
+  width: 40px;
+  height: 40px;
 }
 
 .closeButton:hover {
   color: #333;
+  /* cor de fundo que escurece levemente quando o usuario passar o mouse no botao de fechar */
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 100%;
 }
 
 /* Container dos cards */

@@ -3,7 +3,7 @@ import React from "react";
 import { useMediaQuery } from "react-responsive";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loader from "./Loader.jsx";
-import Header from "./Header.jsx";
+import Header from "./header.jsx";
 import LojaStatus from "./LojaStatus.jsx";
 import Carousel from "./Carousel.jsx";
 import Catalog from "./Catalog.jsx";

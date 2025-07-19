@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Api from './Api.jsx';
 import styles from './style/Catalog.module.css';
-import Bag from "./Bag.jsx";
+import Bag from './Bag.jsx';
+import ProdutoModal from './ProdutoModal.jsx';
 
 // Função para gerar IDs válidos a partir do nome da categoria
 function formatarId(nome) {
@@ -14,6 +15,8 @@ function formatarId(nome) {
 
 const Catalog = () => {
     const [categorias, setCategorias] = useState([]);
+    const [modalProduto, setModalProduto] = useState(null);
+    const [modalAberto, setModalAberto] = useState(false);
 
     const carregarProdutos = async () => {
         try {
@@ -39,13 +42,24 @@ const Catalog = () => {
         carregarProdutos();
     }, []);
 
+    const abrirModalProduto = async (produto) => {
+        try {
+            const res = await Api.get(`/cardmodal/${produto.id}`); // ajuste o endpoint conforme seu backend
+            const dadosModal = res.data;
+            setModalProduto({ ...produto, ...dadosModal });
+            setModalAberto(true);
+        } catch (err) {
+            console.error("Erro ao carregar dados do produto:", err);
+        }
+    };
+
     return (
         <div className={styles.catalogContainer}>
             <div className={styles.cardsContainer}>
                 {categorias.map((categoria) => (
                     <div
                         key={categoria.id}
-                        id={formatarId(categoria.nome)} // <-- ID para scroll automático
+                        id={formatarId(categoria.nome)}
                         className={styles.categoriaSection}
                     >
                         <h2 className={styles.categoriaTitulo}>{categoria.nome}</h2>
@@ -56,7 +70,12 @@ const Catalog = () => {
                                 const isPromocao = categoria.promocoes?.some((promo) => promo.id === item.id);
 
                                 return (
-                                    <div key={item.id} className={styles.prodCard}>
+                                    <div
+                                        key={item.id}
+                                        className={styles.prodCard}
+                                        onClick={() => abrirModalProduto(item)}
+                                        style={{ cursor: 'pointer' }}
+                                    >
                                         <div className={styles.prodInfo}>
                                             <h3>{item.nome}</h3>
                                             <p className={styles.truncateDescription}>{item.descricao}</p>
@@ -107,9 +126,17 @@ const Catalog = () => {
                     </div>
                 ))}
             </div>
+
             <div className={styles.bagContainer}>
                 <Bag />
             </div>
+
+            {modalAberto && (
+                <ProdutoModal
+                    produto={modalProduto}
+                    onClose={() => setModalAberto(false)}
+                />
+            )}
         </div>
     );
 };
