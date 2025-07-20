@@ -1,6 +1,15 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './style/Header.module.css';
+import logo from './src/assets/spaceburger.jpg';
+import homeActive from './src/assets/favicons/home icon active.svg';
+import homeIcon from './src/assets/favicons/home icon.svg';
+import saleActive from './src/assets/favicons/sale icon active.svg';
+import saleIcon from './src/assets/favicons/sale icon.svg';
+import bagCheckActive from './src/assets/favicons/bag-check icon active.svg';
+import bagCheckIcon from './src/assets/favicons/bag-check icon.svg';
+import userActive from './src/assets/favicons/user icon active.svg';
+import userIcon from './src/assets/favicons/user icon.svg';
 
 function Header() {
     const location = useLocation();
@@ -27,7 +36,7 @@ function Header() {
         <header className={styles.header}>
             <nav className={styles.navbar}>
                 <div className={styles.containerFluid}>
-                    <a className={styles.navbarBrand} href="#"><img src="./src/assets/spaceburger.jpg" width="84px" height="84px" alt="Space Burger"></img></a>
+                    <a className={styles.navbarBrand} href="#"><img src={logo} width="84px" height="84px" alt="Space Burger"></img></a>
                     <ul className={styles.navbarNav}>
                         <div className={styles.navbarPadding}>
                             <li className={styles.navItem}>
@@ -36,7 +45,7 @@ function Header() {
                                     className={`${styles.navLink} ${isActive('/') ? styles.navActive : ''}`}
                                     aria-current="page"
                                 >
-                                    <img src={isActive('/') ? "./src/assets/favicons/home icon active.svg" : "./src/assets/favicons/home icon.svg"} width="24px" height="24px" alt="Home"></img>Início
+                                    <img src={isActive('/') ? homeActive : homeIcon} width="24px" height="24px" alt="Home"></img>Início
                                 </Link>
                             </li>
                             <li className={styles.navItem}>
@@ -44,7 +53,7 @@ function Header() {
                                     to="/#promocoes"
                                     className={`${styles.navLink} ${isActive('/#promocoes') ? styles.navActive : ''}`}
                                 >
-                                    <img src={isActive('/#promocoes') ? "./src/assets/favicons/sale icon active.svg" : "./src/assets/favicons/sale icon.svg"} width="24px" height="24px" alt="Promoções"></img>Promoções
+                                    <img src={isActive('/#promocoes') ? saleActive : saleIcon} width="24px" height="24px" alt="Promoções"></img>Promoções
                                 </Link>
                             </li>
                             <li className={styles.navItem}>
@@ -52,7 +61,7 @@ function Header() {
                                     to="/pedidos"
                                     className={`${styles.navLink} ${isActive('/pedidos') ? styles.navActive : ''}`}
                                 >
-                                    <img src={isActive('/pedidos') ? "./src/assets/favicons/bag-check icon active.svg" : "./src/assets/favicons/bag-check icon.svg"} width="24px" height="24px" alt="Pedidos"></img>Pedidos
+                                    <img src={isActive('/pedidos') ? bagCheckActive : bagCheckIcon} width="24px" height="24px" alt="Pedidos"></img>Pedidos
                                 </Link>
                             </li>
                             <li className={styles.navItem}>
@@ -60,7 +69,7 @@ function Header() {
                                     to="/#entcad"
                                     className={`${styles.navLink} ${isActive('/#entcad') ? styles.navActive : ''}`}
                                 >
-                                    <img src={isActive('/#entcad') ? "./src/assets/favicons/user icon active.svg" : "./src/assets/favicons/user icon.svg"} width="24px" height="24px" alt="Entrar/Cadastrar"></img>Entrar/Cadastrar
+                                    <img src={isActive('/#entcad') ? userActive : userIcon} width="24px" height="24px" alt="Entrar/Cadastrar"></img>Entrar/Cadastrar
                                 </Link>
                             </li>
                         </div>

@@ -1,6 +1,9 @@
 import React from 'react';
 import style from './style/Footer.module.css';
 import { useMediaQuery } from "react-responsive";
+import whatsappIcon from './src/assets/favicons/whatsapp-active.svg';
+import instagramIcon from './src/assets/favicons/instagram-icon.svg';
+import phoneIcon from './src/assets/favicons/phone-active.svg';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
@@ -21,15 +24,15 @@ const Footer = () => {
             </div>
             <div className={footerSocial}>
                 <a className={style.socialLink} href="tel:(61) 992918427" target="_blank" rel="noreferrer">
-                    <img className={socialImgClass} src="./src/assets/favicons/whatsapp-active.svg" alt="Telefone"></img>
+                    <img className={socialImgClass} src={whatsappIcon} alt="Telefone"></img>
                 </a>
 
                 <a className={style.socialLink} href="https://www.instagram.com/spaceburgerdf/" target="_blank" rel="noreferrer">
-                    <img className={socialImgClass} src="./src/assets/favicons/instagram-icon.svg" alt="Instagram"></img>
+                    <img className={socialImgClass} src={instagramIcon} alt="Instagram"></img>
                 </a>
 
                 <a className={socialLinkClass} href="https://web.whatsapp.com/send?phone=5561992918427" target="_blank" rel="noreferrer">
-                    <img className={socialImgClass} src="./src/assets/favicons/phone-active.svg" alt="Whatsapp"></img>
+                    <img className={socialImgClass} src={phoneIcon} alt="Whatsapp"></img>
                 </a>
             </div>
         </footer>

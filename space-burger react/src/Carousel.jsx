@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./style/Carousel.module.css";
+import maisVendidos from "./src/assets/stock media/carousel/maisVendidos.jpeg";
+import smash from "./src/assets/stock media/carousel/smash.jpeg";
+import burger150 from "./src/assets/stock media/carousel/burger150.webp";
+import acomp from "./src/assets/stock media/carousel/acomp.jpg";
 
 // Mapeamento dos títulos dos slides para nomes de categoria do banco
 const titleToCategoryMap = {
@@ -15,25 +19,25 @@ const items = [
         id: 1,
         title: "OS MAIS VENDIDOS DA SPACE",
         description: "Aqui você encontra os queridinhos da galera! Uma seleção dos mais vendidos da Space!",
-        image: "./src/assets/stock media/carousel/maisVendidos.jpeg",
+        image: { src: maisVendidos, alt: "Os Mais Vendidos da Space" },
     },
     {
         id: 2,
         title: "COMBOS SMASH",
         description: "Escolha seu Smash Burger preferido com porção e bebida à sua escolha!",
-        image: "./src/assets/stock media/carousel/smash.jpeg",
+        image: { src: smash, alt: "Combos Smash" },
     },
     {
         id: 3,
         title: "COMBOS BURGER 150G",
         description: "Escolha seu Burger preferido com porção e bebida à sua escolha!",
-        image: "./src/assets/stock media/carousel/burger150.webp",
+        image: { src: burger150, alt: "Combos Burger 150G" },
     },
     {
         id: 4,
         title: "ACOMPANHAMENTOS",
         description: "Aqui você escolhe o seu acompanhamento preferido! Temos porção de batatas, nuggets, onion rings (cebola empanada) ou mini coxinhas.",
-        image: "./src/assets/stock media/carousel/acomp.jpg",
+        image: { src: acomp, alt: "Acompanhamentos" },
     },
 ];
 

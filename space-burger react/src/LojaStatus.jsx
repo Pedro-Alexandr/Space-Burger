@@ -1,6 +1,16 @@
 import { useState, useEffect } from "react";
 import styles from "./style/LojaStatus.module.css";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from './src/assets/spaceburger.jpg';
+import mapPinIcon from './src/assets/favicons/map-pin.svg';
+import closeIcon from './src/assets/favicons/close.svg';
+import instaIcon from './src/assets/favicons/insta-logo.svg';
+import whatsappIcon from './src/assets/favicons/whatsapp.svg';
+import phoneIcon from './src/assets/favicons/phone.svg';
+import pixIcon from './src/assets/favicons/pix.svg';
+import creditCardIcon from './src/assets/favicons/credit-card.svg';
+import phoneActiveIcon from './src/assets/favicons/phone-active.svg';
+import whatsappActiveIcon from './src/assets/favicons/whatsapp-active.svg';
 
 const horariosFuncionamento = {
   segunda: null, // Fechado
@@ -84,7 +94,7 @@ function Modal({ isOpen, onClose }) {
             <div className={styles.modalHeader}>
               <h3>SPACE BURGER</h3>
               <button className={styles.botaoFechar} onClick={onClose}>
-                <img className={styles.closeIcon} src="./src/assets/favicons/close.svg" alt="Fechar" />
+                <img className={styles.closeIcon} src={closeIcon} alt="Fechar" />
               </button>
             </div>
 
@@ -123,7 +133,7 @@ function Modal({ isOpen, onClose }) {
                 {activeTab === "sobre" && (
                   <div className={styles.conteudoSobre}>
                     <div className={styles.sobreContent}>
-                      <img className={styles.logo} src="./src/assets/spaceburger.jpg" alt="Logo" />
+                      <img className={styles.logo} src={logo} alt="Logo" />
 
                       <div className={styles.texto}>
                         <p className={styles.texto}>Space Burger – Hambúrguer artesanal com sabor de outro mundo! 🚀🚀🚀</p>
@@ -132,7 +142,7 @@ function Modal({ isOpen, onClose }) {
                         <p className={styles.texto}>Experimente nossas criações estelares sem sair de casa!</p>
                         <p className={styles.texto}>🚀🚀🚀🚀</p>
                         <a className={styles.instaLink} href="https://www.instagram.com/spaceburgerdf/" target="_blank" rel="noreferrer">
-                          <img className={styles.instaIcon} src="./src/assets/favicons/insta-logo.svg" alt="Instagram" />
+                          <img className={styles.instaIcon} src={instaIcon} alt="Instagram" />
                           @spaceburgerdf
                         </a>
                       </div>
@@ -152,13 +162,13 @@ function Modal({ isOpen, onClose }) {
                             {isHoveredWpp ? (
                               <img
                                 className={styles.contactIcon}
-                                src="./src/assets/favicons/whatsapp-active.svg"
+                                src={whatsappActiveIcon}
                                 alt="Whatsapp"
                               />
                             ) : (
                               <img
                                 className={styles.contactIcon}
-                                src="./src/assets/favicons/whatsapp.svg"
+                                src={whatsappIcon}
                                 alt="Whatsapp"
                               />
                             )}
@@ -174,13 +184,13 @@ function Modal({ isOpen, onClose }) {
                             {isHoveredTel ? (
                               <img
                                 className={styles.contactIcon}
-                                src="./src/assets/favicons/phone-active.svg"
+                                src={phoneActiveIcon}
                                 alt="Telefone"
                               />
                             ) : (
                               <img
                                 className={styles.contactIcon}
-                                src="./src/assets/favicons/phone.svg"
+                                src={phoneIcon}
                                 alt="Telefone"
                               />
                             )}
@@ -226,15 +236,15 @@ function Modal({ isOpen, onClose }) {
                 {activeTab === "pagamento" && (
                   <ul className={styles.listaPagamentos}>
                     <li>
-                      <img className={styles.simpleIcon} src="./src/assets/favicons/pix.svg" alt="PIX" />
+                      <img className={styles.simpleIcon} src={pixIcon} alt="PIX" />
                       PIX
                     </li>
                     <li>
-                      <img className={styles.simpleIcon} src="./src/assets/favicons/credit-card.svg" alt="Cartão de Crédito" />
+                      <img className={styles.simpleIcon} src={creditCardIcon} alt="Cartão de Crédito" />
                       Cartão de Crédito
                     </li>
                     <li>
-                      <img className={styles.simpleIcon} src="./src/assets/favicons/credit-card.svg" alt="Cartão de Débito " />
+                      <img className={styles.simpleIcon} src={debitCardIcon} alt="Cartão de Débito " />
                       Cartão de Débito
                     </li>
                   </ul>
@@ -279,7 +289,7 @@ export default function LojaStatus() {
           <li className={Cor}>{status}</li>
           <li>
             <a className={styles.item} href="#" onClick={(e) => e.preventDefault()}>
-              <img className={styles.icon} src="./src/assets/favicons/map-pin.svg" alt="Local" /> Brasília - DF
+              <img className={styles.icon} src={mapPinIcon} alt="Local" /> Brasília - DF
             </a>
           </li>
           <li>
