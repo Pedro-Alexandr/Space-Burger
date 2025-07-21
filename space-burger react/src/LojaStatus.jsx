@@ -244,7 +244,7 @@ function Modal({ isOpen, onClose }) {
                       Cartão de Crédito
                     </li>
                     <li>
-                      <img className={styles.simpleIcon} src={debitCardIcon} alt="Cartão de Débito " />
+                      <img className={styles.simpleIcon} src={creditCardIcon} alt="Cartão de Débito " />
                       Cartão de Débito
                     </li>
                   </ul>
