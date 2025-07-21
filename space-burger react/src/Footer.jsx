@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './style/Footer.module.css';
 import { useMediaQuery } from "react-responsive";
-import whatsappIcon from './src/assets/favicons/whatsapp-active.svg';
-import instagramIcon from './src/assets/favicons/instagram-icon.svg';
-import phoneIcon from './src/assets/favicons/phone-active.svg';
+import whatsappIcon from './assets/favicons/whatsapp-active.svg';
+import instagramIcon from './assets/favicons/instagram-icon.svg';
+import phoneIcon from './assets/favicons/phone-active.svg';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();

@@ -1,10 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./style/Carousel.module.css";
-import maisVendidos from "./src/assets/stock media/carousel/maisVendidos.jpeg";
-import smash from "./src/assets/stock media/carousel/smash.jpeg";
-import burger150 from "./src/assets/stock media/carousel/burger150.webp";
-import acomp from "./src/assets/stock media/carousel/acomp.jpg";
+import maisVendidos from "./assets/stock media/carousel/maisVendidos.jpeg";
+import smash from "./assets/stock media/carousel/smash.jpeg";
+import burger150 from "./assets/stock media/carousel/burger150.webp";
+import acomp from "./assets/stock media/carousel/acomp.jpg";
 
 // Mapeamento dos títulos dos slides para nomes de categoria do banco
 const titleToCategoryMap = {

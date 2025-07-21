@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './style/Header.module.css';
-import logo from './src/assets/spaceburger.jpg';
-import homeActive from './src/assets/favicons/home icon active.svg';
-import homeIcon from './src/assets/favicons/home icon.svg';
-import saleActive from './src/assets/favicons/sale icon active.svg';
-import saleIcon from './src/assets/favicons/sale icon.svg';
-import bagCheckActive from './src/assets/favicons/bag-check icon active.svg';
-import bagCheckIcon from './src/assets/favicons/bag-check icon.svg';
-import userActive from './src/assets/favicons/user icon active.svg';
-import userIcon from './src/assets/favicons/user icon.svg';
+import logo from './assets/spaceburger.jpg';
+import homeActive from './assets/favicons/home icon active.svg';
+import homeIcon from './assets/favicons/home icon.svg';
+import saleActive from './assets/favicons/sale icon active.svg';
+import saleIcon from './assets/favicons/sale icon.svg';
+import bagCheckActive from './assets/favicons/bag-check icon active.svg';
+import bagCheckIcon from './assets/favicons/bag-check icon.svg';
+import userActive from './assets/favicons/user icon active.svg';
+import userIcon from './assets/favicons/user icon.svg';
 
 function Header() {
     const location = useLocation();

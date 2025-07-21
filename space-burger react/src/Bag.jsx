@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './style/Bag.module.css';
-import bagIcon from './src/assets/favicons/bag-noitem.svg';
+import bagIcon from './assets/favicons/bag-noitem.svg';
 
 function Bag() {
 

@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import styles from "./style/LojaStatus.module.css";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from './src/assets/spaceburger.jpg';
-import mapPinIcon from './src/assets/favicons/map-pin.svg';
-import closeIcon from './src/assets/favicons/close.svg';
-import instaIcon from './src/assets/favicons/insta-logo.svg';
-import whatsappIcon from './src/assets/favicons/whatsapp.svg';
-import phoneIcon from './src/assets/favicons/phone.svg';
-import pixIcon from './src/assets/favicons/pix.svg';
-import creditCardIcon from './src/assets/favicons/credit-card.svg';
-import phoneActiveIcon from './src/assets/favicons/phone-active.svg';
-import whatsappActiveIcon from './src/assets/favicons/whatsapp-active.svg';
+import logo from './assets/spaceburger.jpg';
+import mapPinIcon from './assets/favicons/map-pin.svg';
+import closeIcon from './assets/favicons/close.svg';
+import instaIcon from './assets/favicons/insta-logo.svg';
+import whatsappIcon from './assets/favicons/whatsapp.svg';
+import phoneIcon from './assets/favicons/phone.svg';
+import pixIcon from './assets/favicons/pix.svg';
+import creditCardIcon from './assets/favicons/credit-card.svg';
+import phoneActiveIcon from './assets/favicons/phone-active.svg';
+import whatsappActiveIcon from './assets/favicons/whatsapp-active.svg';
 
 const horariosFuncionamento = {
   segunda: null, // Fechado
