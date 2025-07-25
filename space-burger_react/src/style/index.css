@@ -12,12 +12,17 @@ body {
   box-sizing: border-box;
 }
 
+:root {
+  --background: url('./assets/bg/burger-pattern.png');
+}
+
+
 /* O container principal ocupa 100% da altura da tela */
 .wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: url('./assets/bg/burger-pattern.png') repeat center;
+  background: var(--background) repeat center;
   background-size: 30%;
   animation: deslizar-diagonal-acentuado 250s linear infinite;
 }
