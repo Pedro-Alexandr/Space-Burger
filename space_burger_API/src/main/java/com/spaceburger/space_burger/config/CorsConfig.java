@@ -15,6 +15,14 @@ public class CorsConfig implements WebMvcConfigurer {
                         "https://spaceburger.com",
                         "https://www.spaceburger.com",
                         "https://app.spaceburger.com",
+                        "https://space-burger-dks9-pohnxke5q-pedro-alexandrs-projects.vercel.app/",
+                        "https://space-burger-dks9-pohnxke5q-pedro-alexandrs-projects.vercel.app",
+                        "https://space-burger-dks9-pedro-alexandrs-projects.vercel.app/",
+                        "https://space-burger-dks9-pedro-alexandrs-projects.vercel.app",
+                        "https://space-burger-dks9-git-main-pedro-alexandrs-projects.vercel.app/",
+                        "https://space-burger-dks9-git-main-pedro-alexandrs-projects.vercel.app",
+                        "https://space-burger-dks9.vercel.app",
+                        "https://space-burger-dks9.vercel.app/",
                         "http://localhost:5173",
                         "http://127.0.0.1:5173"
                 )
