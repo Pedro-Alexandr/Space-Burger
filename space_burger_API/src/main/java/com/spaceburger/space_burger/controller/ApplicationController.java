@@ -1,8 +1,8 @@
 package com.spaceburger.space_burger.controller;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.spaceburger.space_burger.repository.CategoriaRepository;
 import com.spaceburger.space_burger.repository.PedidoRepository;
@@ -10,7 +10,7 @@ import com.spaceburger.space_burger.repository.ProdutoRepository;
 import com.spaceburger.space_burger.repository.PromocaoRepository;
 import com.spaceburger.space_burger.repository.UsuarioRepository;
 
-@Controller
+@RestController
 public class ApplicationController {
     private final CategoriaRepository categoriaRepository;
     private final ProdutoRepository produtoRepository;
@@ -31,31 +31,31 @@ public class ApplicationController {
     @GetMapping("/categorias")
     public String showCategorias(Model model) {
         model.addAttribute("categorias", categoriaRepository.findAll());
-        return "index";
+        return "API online";
     }
 
     @GetMapping("/produtos")
     public String showProdutos(Model model) {
         model.addAttribute("produtos", produtoRepository.findAll());
-        return "index";
+        return "API online";
     }
 
     @GetMapping("/pedidos")
     public String showPedidos(Model model) {
         model.addAttribute("pedidos", pedidoRepository.findAll());
-        return "index";
+        return "API online";
     }
 
     @GetMapping("#promocoes")
     public String showPromocoes(Model model) {
         model.addAttribute("promocoes", promocaoRepository.findAll());
-        return "index";
+        return "API online";
     }
 
     @GetMapping("/")
     public String showUsuario(Model model) {
         model.addAttribute("usuario", usuarioRepository.findAll());
-        return "index";
+        return "API online";
     }
 
 }
