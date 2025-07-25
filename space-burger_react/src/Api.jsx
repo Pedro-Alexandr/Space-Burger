@@ -12,7 +12,7 @@ const baseURL = (() => {
     return process.env.REACT_APP_API_URL;
   }
   // Valor padrão
-  return 'http://localhost:8080/api';
+  return 'https://space-burger-gdfn.onrender.com/api';
 })();
 
 const api = axios.create({
