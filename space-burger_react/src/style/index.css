@@ -17,7 +17,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background: url('../assets/bg/burger-pattern.png') repeat center;
+  background: url('./assets/bg/burger-pattern.png') repeat center;
   background-size: 30%;
   animation: deslizar-diagonal-acentuado 250s linear infinite;
 }
