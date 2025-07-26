@@ -23,7 +23,7 @@ public class PedidoController {
         this.pedidoRepository = pedidoRepository;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(pedidoRepository.findAll(), HttpStatus.OK);
     }

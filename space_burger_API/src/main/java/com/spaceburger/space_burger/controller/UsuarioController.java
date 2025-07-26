@@ -19,7 +19,7 @@ public class UsuarioController {
         this.usuarioRepository = usuarioRepository;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(usuarioRepository.findAll(), HttpStatus.OK);
     }

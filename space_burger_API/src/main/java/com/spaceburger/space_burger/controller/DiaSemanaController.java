@@ -19,7 +19,7 @@ public class DiaSemanaController {
         this.diaSemanaRepository = diaSemanaRepository;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(diaSemanaRepository.findAll(), HttpStatus.OK);
     }

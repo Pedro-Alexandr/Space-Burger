@@ -19,7 +19,7 @@ public class ProdutoController {
         this.produtoRepository = produtoRepository;
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(produtoRepository.findAll(), HttpStatus.OK);
     }
