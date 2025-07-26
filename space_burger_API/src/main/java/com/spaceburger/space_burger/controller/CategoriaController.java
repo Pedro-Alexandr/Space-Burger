@@ -19,7 +19,7 @@ import com.spaceburger.space_burger.repository.CategoriaRepository;
 import com.spaceburger.space_burger.repository.PromocaoRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/categoria")
 public class CategoriaController {
 
     private final CategoriaRepository categoriaRepository;
@@ -30,7 +30,7 @@ public class CategoriaController {
         this.promocaoRepository = promocaoRepository;
     }
 
-    @GetMapping("/categoria")
+    @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         List<Categoria> categorias = categoriaRepository.findAll();
 
@@ -60,7 +60,7 @@ public class CategoriaController {
         return new ResponseEntity<>(resultadoFinal, HttpStatus.OK);
     }
 
-    @GetMapping("/categoria/nome/{nome}")
+    @GetMapping("/nome/{nome}")
     public ResponseEntity<?> getByNome(@PathVariable String nome) {
         return new ResponseEntity<>(categoriaRepository.findByNomeLike("%" + nome + "%"), HttpStatus.OK);
     }

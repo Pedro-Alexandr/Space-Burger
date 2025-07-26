@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spaceburger.space_burger.repository.DiaSemanaRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/dia_semana")
 public class DiaSemanaController {
 
     private final DiaSemanaRepository diaSemanaRepository;
@@ -19,12 +19,12 @@ public class DiaSemanaController {
         this.diaSemanaRepository = diaSemanaRepository;
     }
 
-    @GetMapping("/dia_semana")
+    @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(diaSemanaRepository.findAll(), HttpStatus.OK);
     }
-    
-    @GetMapping("dia_semana/id/{id}")
+
+    @GetMapping("/id/{id}")
     public ResponseEntity<?> getById(@PathVariable int id) {
         return new ResponseEntity<>(diaSemanaRepository.findById(id), HttpStatus.OK);
     }

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spaceburger.space_burger.repository.PedidoRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/pedido")
 public class PedidoController {
 
     private final PedidoRepository pedidoRepository;
@@ -23,17 +23,17 @@ public class PedidoController {
         this.pedidoRepository = pedidoRepository;
     }
 
-    @GetMapping("/pedido")
+    @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(pedidoRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("pedido/pedido/{pedido}")
+    @GetMapping("/id/{pedido}")
     public ResponseEntity<?> getByPedido(@PathVariable String pedido) {
         return new ResponseEntity<>(pedidoRepository.findByPedidoLike("%" + pedido + "%"), HttpStatus.OK);
     }
 
-    @GetMapping("pedido/data/{data}")
+    @GetMapping("/data/{data}")
     public ResponseEntity<?> getByData(@PathVariable String data) {
         try {
             // Converter a string recebida para LocalDate
@@ -50,22 +50,22 @@ public class PedidoController {
         }
     }
 
-    @GetMapping("pedido/tipoPagamento/{tipoPagamento}")
+    @GetMapping("/tipoPagamento/{tipoPagamento}")
     public ResponseEntity<?> getByTipoPagamento(@PathVariable String tipoPagamento) {
         return new ResponseEntity<>(pedidoRepository.findByTipoPagamentoLike("%" + tipoPagamento + "%"), HttpStatus.OK);
     }
 
-    @GetMapping("pedido/usuario/{usuario}")
+    @GetMapping("/usuario/{usuario}")
     public ResponseEntity<?> getByUsuarioNome(@PathVariable String usuarioNome) {
         return new ResponseEntity<>(pedidoRepository.findByUsuario_NomeContaining(usuarioNome), HttpStatus.OK);
     }
 
-    @GetMapping("pedido/usuario/id/{usuario}")
+    @GetMapping("/usuario/id/{usuario}")
     public ResponseEntity<?> getByUsuarioId(@PathVariable int usuario_IdStart, @PathVariable int usuario_IdEnd) {
         return new ResponseEntity<>(pedidoRepository.findByUsuario_IdBetween(usuario_IdStart, usuario_IdEnd), HttpStatus.OK);
     }
 
-    @GetMapping("pedido/status/{status}")
+    @GetMapping("/status/{status}")
     public ResponseEntity<?> getByStatus(@PathVariable String status) {
         return new ResponseEntity<>(pedidoRepository.findByStatusLike("%" + status + "%"), HttpStatus.OK);
     }

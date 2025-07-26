@@ -14,7 +14,7 @@ import com.spaceburger.space_burger.entity.Promocao;
 import com.spaceburger.space_burger.repository.PromocaoRepository;
 
 @RestController
-@RequestMapping("/api/promocoes")
+@RequestMapping("/promocoes")
 public class PromocaoController {
     
     private final PromocaoRepository promocaoRepository;

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.spaceburger.space_burger.repository.ProdutoRepository;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/produto")
 public class ProdutoController {
 
     private final ProdutoRepository produtoRepository;
@@ -19,22 +19,22 @@ public class ProdutoController {
         this.produtoRepository = produtoRepository;
     }
 
-    @GetMapping("/produto")
+    @GetMapping("/all")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(produtoRepository.findAll(), HttpStatus.OK);
     }
-    
-    @GetMapping("produto/nome/{nome}")
+
+    @GetMapping("/nome/{nome}")
     public ResponseEntity<?> getByNome(@PathVariable String nome) {
         return new ResponseEntity<>(produtoRepository.findByNomeLike("%" + nome + "%"), HttpStatus.OK);
     }
 
-    @GetMapping("produto/categoria/{categoria}")
+    @GetMapping("/categoria/{categoria}")
     public ResponseEntity<?> getByCategoria(@PathVariable String categoriaNome) {
         return new ResponseEntity<>(produtoRepository.findByCategoria_NomeContaining("%" + categoriaNome + "%"), HttpStatus.OK);
     }
 
-    @GetMapping("produto/categoria/{categoriaId}")
+    @GetMapping("/categoria/{categoriaId}")
     public ResponseEntity<?> getByCategoria(@PathVariable int categoria_IdStart , @PathVariable int categoria_IdEnd) {
         return new ResponseEntity<>(produtoRepository.findByCategoria_IdBetween(categoria_IdStart, categoria_IdEnd), HttpStatus.OK);
     }
