@@ -23,7 +23,7 @@ public class PromocaoController {
         this.promocaoRepository = promocaoRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<?> getAll() {
         return new ResponseEntity<>(promocaoRepository.findAll(), HttpStatus.OK);
     }

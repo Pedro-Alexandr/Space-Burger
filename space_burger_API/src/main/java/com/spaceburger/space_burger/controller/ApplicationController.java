@@ -52,7 +52,7 @@ public class ApplicationController {
         return "API online";
     }
 
-    @GetMapping("/")
+    @GetMapping("/usuarios")
     public String showUsuario(Model model) {
         model.addAttribute("usuario", usuarioRepository.findAll());
         return "API online";

@@ -30,7 +30,7 @@ public class CategoriaController {
         this.promocaoRepository = promocaoRepository;
     }
 
-    @GetMapping("/")
+    @GetMapping("")
     public ResponseEntity<?> getAll() {
         List<Categoria> categorias = categoriaRepository.findAll();
 
