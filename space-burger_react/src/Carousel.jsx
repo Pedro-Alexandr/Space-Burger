@@ -16,7 +16,7 @@ const items = [
         id: 1,
         title: "OS MAIS VENDIDOS DA SPACE",
         description: "Aqui você encontra os queridinhos da galera! Uma seleção dos mais vendidos da Space!",
-        image: { src: "/carousel/maisVendidos.jpeg", alt: "Os Mais Vendidos da Space" },
+        image: { src: "/carousel/mais-vendidos.jpeg", alt: "Os Mais Vendidos da Space" },
     },
     {
         id: 2,
