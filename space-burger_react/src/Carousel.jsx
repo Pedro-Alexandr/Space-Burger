@@ -15,33 +15,29 @@ const titleToCategoryMap = {
 };
 
 const items = [
-    maisVendidos = maisVendidos,
-    smash = smash,
-    burger150 = burger150,
-    acomp = acomp,
     {
         id: 1,
         title: "OS MAIS VENDIDOS DA SPACE",
         description: "Aqui você encontra os queridinhos da galera! Uma seleção dos mais vendidos da Space!",
-        image: { src: maisVendidos, alt: "Os Mais Vendidos da Space" },
+        image: { src: { maisVendidos }, alt: "Os Mais Vendidos da Space" },
     },
     {
         id: 2,
         title: "COMBOS SMASH",
         description: "Escolha seu Smash Burger preferido com porção e bebida à sua escolha!",
-        image: { src: smash, alt: "Combos Smash" },
+        image: { src: { smash }, alt: "Combos Smash" },
     },
     {
         id: 3,
         title: "COMBOS BURGER 150G",
         description: "Escolha seu Burger preferido com porção e bebida à sua escolha!",
-        image: { src: burger150, alt: "Combos Burger 150G" },
+        image: { src: { burger150 }, alt: "Combos Burger 150G" },
     },
     {
         id: 4,
         title: "ACOMPANHAMENTOS",
         description: "Aqui você escolhe o seu acompanhamento preferido! Temos porção de batatas, nuggets, onion rings (cebola empanada) ou mini coxinhas.",
-        image: { src: acomp, alt: "Acompanhamentos" },
+        image: { src: { acomp }, alt: "Acompanhamentos" },
     },
 ];
 
