@@ -11,10 +11,7 @@ const titleToCategoryMap = {
 };
 
 const items = [
-    maisVendidos = maisVendidos,
-    smash = smash,
-    burger150 = burger150,
-    acomp = acomp,
+    // Lista de itens do carrossel
     {
         id: 1,
         title: "OS MAIS VENDIDOS DA SPACE",
