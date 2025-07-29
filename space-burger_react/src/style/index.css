@@ -13,7 +13,7 @@ body {
 }
 
 :root {
-  --background: url('./assets/bg/burger-pattern.png');
+  --background: url('/bg/burger-pattern.png');
 }
 
 
