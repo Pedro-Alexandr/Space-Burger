@@ -1,6 +1,10 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./style/Carousel.module.css";
+import maisVendidos from "./assets/stock-media/carousel/maisVendidos.jpeg";
+import smash from "./assets/stock-media/carousel/smash.jpeg";
+import burger150 from "./assets/stock-media/carousel/burger150.webp";
+import acomp from "./assets/stock-media/carousel/acomp.jpg";
 
 // Mapeamento dos títulos dos slides para nomes de categoria do banco
 const titleToCategoryMap = {
@@ -11,30 +15,33 @@ const titleToCategoryMap = {
 };
 
 const items = [
-    // Lista de itens do carrossel
+    maisVendidos = maisVendidos,
+    smash = smash,
+    burger150 = burger150,
+    acomp = acomp,
     {
         id: 1,
         title: "OS MAIS VENDIDOS DA SPACE",
         description: "Aqui você encontra os queridinhos da galera! Uma seleção dos mais vendidos da Space!",
-        image: { src: "/public/carousel/mais-vendidos.jpeg", alt: "Os Mais Vendidos da Space" },
+        image: { src: maisVendidos, alt: "Os Mais Vendidos da Space" },
     },
     {
         id: 2,
         title: "COMBOS SMASH",
         description: "Escolha seu Smash Burger preferido com porção e bebida à sua escolha!",
-        image: { src: "/public/carousel/smash.jpeg", alt: "Combos Smash" },
+        image: { src: smash, alt: "Combos Smash" },
     },
     {
         id: 3,
         title: "COMBOS BURGER 150G",
         description: "Escolha seu Burger preferido com porção e bebida à sua escolha!",
-        image: { src: "/public/carousel/burger150.webp", alt: "Combos Burger 150G" },
+        image: { src: burger150, alt: "Combos Burger 150G" },
     },
     {
         id: 4,
         title: "ACOMPANHAMENTOS",
         description: "Aqui você escolhe o seu acompanhamento preferido! Temos porção de batatas, nuggets, onion rings (cebola empanada) ou mini coxinhas.",
-        image: { src: "/public/carousel/acomp.jpg", alt: "Acompanhamentos" },
+        image: { src: acomp, alt: "Acompanhamentos" },
     },
 ];
 
